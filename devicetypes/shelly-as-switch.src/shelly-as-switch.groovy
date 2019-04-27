@@ -20,13 +20,11 @@
  *   ison=boolean
  *
  */
- 
- 
 
 metadata {
-	definition (name: "Shelly as Switch", namespace: "dgasparri", author: "Duccio Marco Gasparri") {
-		capability "Actuator"
-		capability "Sensor"
+	definition (name: "Shelly as Switch", namespace: "sgrayban", author: "Scott Grayban") {
+	capability "Actuator"
+	capability "Sensor"
         capability "Refresh" // refresh command
         capability "Health Check"
         capability "Switch"

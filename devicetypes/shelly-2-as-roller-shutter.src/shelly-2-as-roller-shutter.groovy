@@ -25,7 +25,7 @@
  
 
 metadata {
-	definition (name: "Shelly 2 as Roller Shutter", namespace: "dgasparri", author: "Duccio Marco Gasparri") {
+	definition (name: "Shelly 2 as Roller Shutter", namespace: "sgrayban", author: "Scott Grayban") {
 		capability "Actuator"
 		capability "Sensor"
         capability "Refresh" // refresh command
