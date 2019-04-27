@@ -22,12 +22,10 @@
  *
  */
  
- 
-
 metadata {
 	definition (name: "Shelly 2 as Roller Shutter", namespace: "sgrayban", author: "Scott Grayban") {
-		capability "Actuator"
-		capability "Sensor"
+	capability "Actuator"
+	capability "Sensor"
         capability "Refresh" // refresh command
         capability "Health Check"
         capability "Switch Level" // attribute: level (integer, setter: setLevel), command setLevel(level)
@@ -38,8 +36,6 @@ metadata {
 	    // attribute "IP", "string"
         command "stop"
 	}
-
-
 
 	tiles(scale: 2) {
         multiAttributeTile(name:"windowShade", type: "generic", width: 6, height: 4){
@@ -88,7 +84,6 @@ metadata {
 	}
 }
 
-
 def getCheckInterval() {
     // These are battery-powered devices, and it's not very critical
     // to know whether they're online or not – 12 hrs
@@ -110,19 +105,10 @@ def updated() {
     refresh()
 }
 
-
 def parse(description) {
     log.debug "Parsing result $description"
     
     def msg = parseLanMessage(description)
-
-    // log.debug "Lan message $msg"
-    // headers:[content-length:172, http/1.1 200 ok:null, connection:close, content-type:application/json, server:Mongoose/6.11], 
-    // body:{"state":"close","power":0.00,"is_valid":true,"safety_switch":false,"stop_reason":"normal",
-    //    "last_direction":"close","current_pos":46,"calibrating":false,"positioning":true}, 
-    // header:HTTP/1.1 200 OK 
-    
- 
     def headersAsString = msg.header // => headers as a string
     def headerMap = msg.headers      // => headers as a Map
     def body = msg.body              // => request body as a string
@@ -152,9 +138,6 @@ def parse(description) {
     //log.debut "Parsed to ${evt1.inspect()} and ${evt2.inspect()}"
     return [evt1, evt2]
 }
-
-
-
 
 def open() {
     log.debug "Executing 'open'"
@@ -224,7 +207,6 @@ def sendRollerCommand(action) {
     runIn(25, refresh)
 }
 
-
 private getShellyAddress() {
     def port = 80
     def iphex = ip.tokenize( '.' ).collect { String.format( '%02x', it.toInteger() ) }.join().toUpperCase()
@@ -234,4 +216,3 @@ private getShellyAddress() {
     log.debug "Using IP " + ip + ", PORT 80 and HEX ADDRESS " + shellyAddress + " for device: ${device.id}"
     return device.deviceNetworkId
 }
-

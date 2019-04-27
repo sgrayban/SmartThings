@@ -30,8 +30,6 @@ metadata {
         capability "Switch"
 	}
 
-
-
     tiles(scale: 2) {
         multiAttributeTile(name:"switch", type: "lighting", width: 6, height: 4, canChangeIcon: true){
             tileAttribute ("device.switch", key: "PRIMARY_CONTROL") {
@@ -54,7 +52,6 @@ metadata {
             state "disabled", label:'', action:"", icon:"st.secondary.refresh"
         }
 
-
         main(["switch"])
         details(["switch", "explicitOn", "explicitOff","refresh"])
 
@@ -67,7 +64,6 @@ metadata {
     }
 
 }
-
 
 def getCheckInterval() {
     // These are battery-powered devices, and it's not very critical
@@ -90,19 +86,10 @@ def updated() {
     refresh()
 }
 
-
 def parse(description) {
     log.debug "Parsing result $description"
     
     def msg = parseLanMessage(description)
-
-    // log.debug "Lan message $msg"
-    // headers:[content-length:172, http/1.1 200 ok:null, connection:close, content-type:application/json, server:Mongoose/6.11], 
-    // body:{"state":"close","power":0.00,"is_valid":true,"safety_switch":false,"stop_reason":"normal",
-    //    "last_direction":"close","current_pos":46,"calibrating":false,"positioning":true}, 
-    // header:HTTP/1.1 200 OK 
-    
- 
     def headersAsString = msg.header // => headers as a string
     def headerMap = msg.headers      // => headers as a Map
     def body = msg.body              // => request body as a string
@@ -124,7 +111,6 @@ def parse(description) {
     return evt1
 }
 
-
 //switch.on
 def on() {
     log.debug "Executing switch.on"
@@ -136,8 +122,6 @@ def off() {
     log.debug "Executing switch.off"
     sendSwitchCommand "turn=off"
 }
-
-
 
 def ping() {
     log.debug "Ping"
@@ -169,7 +153,6 @@ def sendSwitchCommand(action) {
     ))
     runIn(25, refresh)
 }
-
 
 private getShellyAddress() {
     def port = 80
