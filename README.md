@@ -1,2 +1,2 @@
 # SmartThings
-All my DH
+All my SmartThings device handlers
