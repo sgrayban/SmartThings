@@ -3,7 +3,7 @@
  *
  *  Author: sgrayban
  */
-// for the UI
+
 metadata {
         // Automatically generated. Make future change here.
         definition (name: "Hubitat Bridge", namespace: "sgrayban", author: "sgrayban") {
@@ -11,9 +11,11 @@ metadata {
                 capability "Health Check"
 
                 attribute "networkAddress", "string"
+
                 // Used to indicate if bridge is reachable or not, i.e. is the bridge connected to the network
                 // Possible values "Online" or "Offline"
                 attribute "status", "string"
+
                 // Id is the number on the back of the hub, Hue uses last six digits of Mac address
                 // This is also used in the Hue application as ID
                 attribute "idNumber", "string"
