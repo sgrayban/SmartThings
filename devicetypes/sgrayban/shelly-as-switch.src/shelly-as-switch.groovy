@@ -159,5 +159,5 @@ private getShellyAddress() {
     def shellyAddress = iphex + ":" + porthex
     device.deviceNetworkId = shellyAddress.toUpperCase()
     log.debug "Using IP " + ip + ", PORT 80 and HEX ADDRESS " + shellyAddress + " for device: ${device.id}"
-//    return device.deviceNetworkId // Allow this handler to use the same IP and not break the DNI check
+    return device.deviceNetworkId
 }
