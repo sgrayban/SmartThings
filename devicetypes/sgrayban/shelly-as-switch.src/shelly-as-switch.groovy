@@ -66,8 +66,6 @@ metadata {
 }
 
 def getCheckInterval() {
-    // These are battery-powered devices, and it's not very critical
-    // to know whether they're online or not – 12 hrs
     log.debug "getCheckInterval"
     return 4 * 60 * 60
 }
@@ -161,5 +159,5 @@ private getShellyAddress() {
     def shellyAddress = iphex + ":" + porthex
     device.deviceNetworkId = shellyAddress.toUpperCase()
     log.debug "Using IP " + ip + ", PORT 80 and HEX ADDRESS " + shellyAddress + " for device: ${device.id}"
-    return device.deviceNetworkId
+//    return device.deviceNetworkId // Allow this handler to use the same IP and not break the DNI check
 }
