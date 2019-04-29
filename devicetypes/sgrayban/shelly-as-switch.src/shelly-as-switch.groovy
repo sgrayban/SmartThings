@@ -157,7 +157,6 @@ private getShellyAddress() {
     def iphex = ip.tokenize( '.' ).collect { String.format( '%02x', it.toInteger() ) }.join().toUpperCase()
     def porthex = String.format('%04x', port.toInteger())
     def shellyAddress = iphex + ":" + porthex
-    device.deviceNetworkId = shellyAddress.toUpperCase()
     log.debug "Using IP " + ip + ", PORT 80 and HEX ADDRESS " + shellyAddress + " for device: ${device.id}"
-    return device.deviceNetworkId
+    return shellyAddress
 }
